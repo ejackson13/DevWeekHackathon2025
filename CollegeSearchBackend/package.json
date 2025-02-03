@@ -1,0 +1,24 @@
+{
+  "name": "collegesearchbackend",
+  "version": "1.0.0",
+  "description": "Backend for College Search App for DevWeek Hackathon 2025",
+  "homepage": "https://github.com/ejackson13/DevWeekHackathon2025#readme",
+  "bugs": {
+    "url": "https://github.com/ejackson13/DevWeekHackathon2025/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejackson13/DevWeekHackathon2025.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
