@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Link } from 'expo-router'
 
 const Homepage: React.FC = () => {
   const navigation = useNavigation();
@@ -12,9 +13,11 @@ const Homepage: React.FC = () => {
       <Text style={styles.subtitle}>
         Discover and explore the best colleges based on your preferences.
       </Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Search')}>
-        <Text style={styles.buttonText}>Get Started</Text>
-      </TouchableOpacity>
+      <Link href="/search" asChild>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Get Started</Text>
+        </TouchableOpacity>
+      </Link>
     </View>
   );
 };
