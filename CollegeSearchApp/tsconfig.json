@@ -7,7 +7,8 @@
         "./*"
       ]
     },
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "."
   },
   "include": [
     "**/*.ts",
