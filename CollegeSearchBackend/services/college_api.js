@@ -25,12 +25,12 @@ async function getCollegeList(param_string) {
 
 
 async function getTopColleges() {
-    const data_string = fs.readFileSync('services/data.csv')
+    const data_string = fs.readFileSync('services/us_rankings.csv')
     const ranking_data = parse.parse(data_string, {
         columns: true,
         cast: true,
     })
-
+    
 }
 
 
