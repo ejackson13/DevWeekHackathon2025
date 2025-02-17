@@ -1,4 +1,6 @@
 const axios = require("axios");
+const fs = require("fs")
+const parse = require('csv-parse/sync')
 
 const BASE_URL = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${process.env.API_KEY}&`;
 
@@ -22,7 +24,12 @@ async function getCollegeList(param_string) {
 }
 
 
-async function getTopColleges(params) {
+async function getTopColleges() {
+    const data_string = fs.readFileSync('services/data.csv')
+    const ranking_data = parse.parse(data_string, {
+        columns: true,
+        cast: true,
+    })
 
 }
 

@@ -1,4 +1,6 @@
 const collegeapi = require('../services/college_api')
+const express = require('express');
+const router = express.Router();
 
 
 /**
@@ -58,6 +60,12 @@ const collegeSearchPost = async (req, res) => {
 
 
 
+const topCollegesPost = async (req, res) => {
+    collegeapi.getTopColleges();
+}
+
+
+
 /**
  * Post controller for detailed information about a single college
  * 
@@ -96,3 +104,10 @@ const singleCollegePost = async (req, res) => {
         res.send(e)
     }
 }
+
+
+router.post("/", collegeSearchPost);
+router.post("/top", topCollegesPost);
+router.post("/college", singleCollegePost)
+
+module.exports = router;
