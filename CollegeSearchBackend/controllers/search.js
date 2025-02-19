@@ -17,32 +17,33 @@ const router = express.Router();
         'dist': '10mi',                                                 // Distance from zip code to find schools
         'school.locale': ['Midsize City'],                              // Value list. Urbanization of school setting. See dictionary for values
         'school.region_id': ['Mideast'],                                // Value list. Geographic region of school. See dictionary for values
-        'admissions.admission_rate.overall': [50, 80],
+        'admissions.admission_rate.overall': ['r,', 50, 80],
         'admissions.sat_scores': {                                      // Sat scores
             percentile: '75th_percentile',                              // percentile to base results on (25th_percentile, midpoint, or 75th_percentile)
             categories: [
                 {
-                    critical_reading: [200, 300],                       // Range. SAT critical reading score range
-                    math: [500,600],                                    // Range. SAT math score range
-                    writing: [200,300]                                  // Range. SAT writing score range
+                    critical_reading: ['r,', 200, 300],                       // Range. SAT critical reading score range
+                    math: ['r,', 500,600],                                    // Range. SAT math score range
+                    writing: ['r,', 200,300]                                  // Range. SAT writing score range
                 }
             ]                                                           
         },                                                              
-        'admissions.act_scores.midpoint.cumulative': [30, 33],          // Range. 50th percentile ACT cumalitive score
-        'latest.student.size': [20000, 25000],                                 // Range. Undergraduate enrollment
-        'latest.cost.avg_net_price.public': [10000, 20000],             // Range. Avg net price for public institutions
-        'latest.cost.avg_net_price.private': [10000, 20000],            // Range. Avg net price for private institutions
-        'latest.cost.tuition.in_state': [10000, 20000],                 // Range. In state tuition
-        'latest.cost.tuition.out_of_state': [10000, 20000],             // Range. Out of state tuition
-        'completion.completion_rate_4yr_150nt_pooled': [80, 90],        // Range. Completion percentage (simply put)
+        'admissions.act_scores.midpoint.cumulative': ['r,', 30, 33],          // Range. 50th percentile ACT cumalitive score
+        'latest.student.size': ['r,', 20000, 25000],                                 // Range. Undergraduate enrollment
+        'latest.cost.avg_net_price.public': ['r,', 10000, 20000],             // Range. Avg net price for public institutions
+        'latest.cost.avg_net_price.private': ['r,', 10000, 20000],            // Range. Avg net price for private institutions
+        'latest.cost.tuition.in_state': ['r,', 10000, 20000],                 // Range. In state tuition
+        'latest.cost.tuition.out_of_state': ['r,', 10000, 20000],             // Range. Out of state tuition
+        'completion.completion_rate_4yr_150nt_pooled': ['r,', 80, 90],        // Range. Completion percentage (simply put)
         'admissions.test_requirements': ["Required", "Recommended"],    // Value List. options are: Required (1), Recommended (2), 
                                                                         // Neither required nor recommended (3), Do not know (4),
                                                                         // Considered but not required (5)
 
         'page': 1,                                                      // which page of results is returned
         'per_page': 20                                                  // number of results to return per page, max 100                                        
-        'area of study': 'Agriculture'                                  // field of study to check that they have, see data dictionary for values - NOT INDEXABLE
-        'retention_rate.four_year.full_time': [50,70]                   // Range. retention rate - NOT INDEXABLE
+        'area of study': ['l, 'Agriculture']                                 // field of study to check that they have, see data dictionary for values - NOT INDEXABLE
+        'retention_rate.four_year.full_time': ['r,', 50,70]                   // Range. retention rate - NOT INDEXABLE
+        'rank': [r, 1, 30]                                              // Range, general ranking of schools to show - NOT IN API, ADDED AFTER MANUALLY
     },
     sort: {
         'asc': true,                                                    // boolean value for whether to sort ascending or descending
@@ -55,7 +56,76 @@ const router = express.Router();
  *      
  */
 const collegeSearchPost = async (req, res) => {
-    
+    // define what fields we want to return
+    const fields_list = [
+        'school.name', 
+        'school.city', 
+        'school.state', 
+        'latest.student.size',
+        'latest.admissions.admission_rate.overall',
+        'latest.cost.avg_net_price.public',
+        'latest.cost.avg_net_price.private']
+
+
+    // get and initialize variables
+    const body = req.body;
+    var filters = body.filters;
+    var sort = body.sort;
+    var param_string = "";
+
+    console.log(body.filters);
+    console.log(Object.keys(filters));
+
+    // convert filters into param string
+    for (var [filter, val] of Object.entries(filters)){
+        //var filter = Object.keys(filters)[i];
+        console.log(filter)
+        console.log(val)
+        if (filter == 'rank') {
+            continue;
+        } else if (filter === 'admissions.sat_scores') {
+            continue;
+        }
+
+        // add filter category and = sign
+        param_string += filter;
+
+        // add data based
+        // is it a single item?
+        if (!Array.isArray(val)) {
+            // add value to string normally
+            param_string += '=';
+            param_string += val;
+        }
+        // is it a range?
+        else if (val[0] === 'r') {
+            // add values using range operators
+            param_string += '__range=';
+            param_string += `${val[1]}..${val[2]}`;
+        }
+        // is it a value list? 
+        else {
+            // add all values with commas between them
+            param_string += '=';
+            for (let j=0; j<val.length; j++) {
+                param_string += val[j];
+
+                if (j !== val.length-1) {
+                    param_string += ',';
+                }
+            }
+        }
+
+        // add andpersand for next filter
+        param_string += '&';
+    }
+
+    console.log(param_string);
+
+    // add sorting to string
+
+
+    // add fields to string
 }
 
 
