@@ -41,9 +41,9 @@ const router = express.Router();
 
         'page': 1,                                                      // which page of results is returned
         'per_page': 20                                                  // number of results to return per page, max 100                                        
-        'area of study': ['l, 'Agriculture']                                 // field of study to check that they have, see data dictionary for values - NOT INDEXABLE
+        'area of study': ['Agriculture']                                 // field of study to check that they have, see data dictionary for values - NOT INDEXABLE
         'retention_rate.four_year.full_time': ['r,', 50,70]                   // Range. retention rate - NOT INDEXABLE
-        'rank': [r, 1, 30]                                              // Range, general ranking of schools to show - NOT IN API, ADDED AFTER MANUALLY
+        'rank': [1, 30]                                              // Range, general ranking of schools to show - NOT IN API, ADDED AFTER MANUALLY
     },
     sort: {
         'asc': true,                                                    // boolean value for whether to sort ascending or descending
@@ -73,14 +73,8 @@ const collegeSearchPost = async (req, res) => {
     var sort = body.sort;
     var param_string = "";
 
-    console.log(body.filters);
-    console.log(Object.keys(filters));
-
     // convert filters into param string
     for (var [filter, val] of Object.entries(filters)){
-        //var filter = Object.keys(filters)[i];
-        console.log(filter)
-        console.log(val)
         if (filter == 'rank') {
             continue;
         } else if (filter === 'admissions.sat_scores') {
@@ -120,12 +114,31 @@ const collegeSearchPost = async (req, res) => {
         param_string += '&';
     }
 
-    console.log(param_string);
-
     // add sorting to string
+    if (sort && sort.sortby !== "rank") {
+        param_string += `sort=${sort.sortby}:`
+        param_string += sort.asc ? "asc" : "desc"
+        param_string += "&"
+    }
 
 
     // add fields to string
+    param_string += "fields="
+    for (let i=0; i<fields_list.length; i++) {
+        param_string += fields_list[i];
+
+        if (i !== fields_list.length-1) {
+            param_string += ',';
+        }
+    }
+
+    //console.log(param_string);
+
+    const search_results = await collegeapi.getCollegeList(param_string)
+    //console.log(search_results)
+
+    res.json(search_results);
+    res.send()
 }
 
 
