@@ -64,6 +64,14 @@ app.get('/threads', async (req, res) => {
     }
 });
 
+
+// Routes
+const searchRoutes = require("./controllers/search");
+
+app.use("/search", searchRoutes);
+
+
+
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

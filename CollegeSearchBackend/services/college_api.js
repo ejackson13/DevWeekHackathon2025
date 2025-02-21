@@ -1,4 +1,6 @@
 const axios = require("axios");
+const fs = require("fs")
+const parse = require('csv-parse/sync')
 
 const BASE_URL = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${process.env.API_KEY}&`;
 
@@ -9,12 +11,16 @@ const BASE_URL = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${
  * 
  * @param param_string -  a string containing the parameters that will be appended to the end of the base url
  *                  Should look something like: 'school.name=Harvard University&page=1&per_page=1&fields=id,school.name,latest.student.size'
+ * @param alt - an object containing the other filters to filter data by that aren't indexable
+ * @param ranked_sort - indicates that the results should be sorted by rank. If it is "asc" it will sort by ascending rank, if it is "desc" it will sort by descending rank, and if it is anything else it won't sort by rank 
  *                  
  */
-async function getCollegeList(param_string) {
+async function getCollegeList(param_string, alt, ranked_sort) {
     try {
-        var response = axios.get(BASE_URL + param_string)
-        return response
+        //console.log(BASE_URL + param_string)
+
+        var response = await axios.get(BASE_URL + param_string)
+        return response.data
     } catch (e) {
         console.log(e)
         return e
@@ -22,8 +28,13 @@ async function getCollegeList(param_string) {
 }
 
 
-async function getTopColleges(params) {
-
+async function getTopColleges() {
+    const data_string = fs.readFileSync('services/us_rankings.csv')
+    const ranking_data = parse.parse(data_string, {
+        columns: true,
+        cast: true,
+    })
+    
 }
 
 

@@ -1,0 +1,198 @@
+world_rank,us_rank,name,country,region,intl_student_score,intl_student_rank
+1,1,Massachusetts Institute of Technology (MIT) ,United States,Americas,86.8,143
+4,2,Harvard University,United States,Americas,69,215
+6,3,Stanford University,United States,Americas,60.8,244
+10,4,California Institute of Technology (Caltech),United States,Americas,79.8,172
+11,5,University of Pennsylvania,United States,Americas,66.2,226
+12,6,"University of California, Berkeley (UCB)",United States,Americas,61,242
+16,7,Cornell University,United States,Americas,63.4,237
+21,8,University of Chicago,United States,Americas,87,140
+22,9,Princeton University,United States,Americas,56.6,264
+23,10,Yale University,United States,Americas,63.3,238
+32,11,Johns Hopkins University,United States,Americas,95.8,92
+34,12,Columbia University,United States,Americas,97,79
+42,13,"University of California, Los Angeles (UCLA)",United States,Americas,22.3,515
+43,14,New York University (NYU),United States,Americas,98.1,68
+44,15,University of Michigan-Ann Arbor,United States,Americas,39.2,359
+50,16,Northwestern University,United States,Americas,52,283
+58,17,Carnegie Mellon University,United States,Americas,99.1,58
+61,18,Duke University,United States,Americas,61,243
+66,19,University of Texas at Austin,United States,Americas,11.7,685
+69,20,University of Illinois at Urbana-Champaign,United States,Americas,56.3,266
+72,21,"University of California, San Diego (UCSD)",United States,Americas,44.3,328
+76,22,University of Washington,United States,Americas,32.8,407
+79,23,Brown University,United States,Americas,50.9,289
+89,24,Pennsylvania State University,United States,Americas,28,446
+89,25,Purdue University,United States,Americas,45.2,325
+108,26,Boston University,United States,Americas,88.9,130
+114,27,Georgia Institute of Technology,United States,Americas,66.4,224
+116,28,University of Wisconsin-Madison,United States,Americas,23.6,498
+125,29,University of Southern California,United States,Americas,74.1,192
+130,30,"University of California, Davis",United States,Americas,51.3,286
+141,31,Rice University,United States,Americas,94.1,99
+152,32,Michigan State University,United States,Americas,12.4,668
+154,33,Texas A&M University,United States,Americas,12.1,678
+155,34,"University of North Carolina, Chapel Hill",United States,Americas,11.1,696
+171,35,Washington University in St. Louis,United States,Americas,72.4,201
+178,36,"University of California, Santa Barbara (UCSB)",United States,Americas,17.2,583
+196,37,Emory University,United States,Americas,33.9,399
+200,38,Arizona State University,United States,Americas,37.2,378
+203,39,University of Minnesota Twin Cities,United States,Americas,8.7,701+
+208,40,The Ohio State University,United States,Americas,10.6,701+
+215,41,University of Florida,United States,Americas,10.3,701+
+218,42,"University of Maryland, College Park",United States,Americas,16.2,603
+236,43,University of Rochester,United States,Americas,93.8,100
+243,44,Dartmouth College,United States,Americas,40.9,351
+248,45,Vanderbilt University,United States,Americas,36,383
+259,46,Case Western Reserve University,United States,Americas,71.7,205
+275,47,University of Massachusetts Amherst,United States,Americas,25.3,474
+275,48,University of Pittsburgh,United States,Americas,13.5,650
+293,49,The University of Arizona,United States,Americas,15.1,620
+297,50,University of Virginia,United States,Americas,11.3,690
+301,51,Georgetown University,United States,Americas,37.3,377
+307,52,"University of California, Irvine",United States,Americas,58.7,252
+311,53,North Carolina State University,United States,Americas,17,585
+316,54,University of Notre Dame,United States,Americas,18.4,575
+320,55,University of Colorado Boulder,United States,Americas,4.9,701+
+324,56,University of Miami,United States,Americas,16.9,587
+328,57,Rutgers University–New Brunswick,United States,Americas,28.2,443
+344,58,Tufts University,United States,Americas,38.1,369
+355,59,Indiana University Bloomington,United States,Americas,10.8,701+
+365,60,University of Illinois at Chicago (UIC),United States,Americas,19.3,560
+371,61,George Washington University,United States,Americas,34.4,394
+389,62,Virginia Polytechnic Institute and State University,United States,Americas,16.5,594
+393,63,"University of California, Santa Cruz",United States,Americas,7,701+
+396,64,Northeastern University,United States,Americas,96.4,85
+413,65,Yeshiva University,United States,Americas,13.5,651
+442,66,Colorado State University,United States,Americas,3.7,701+
+452,67,University of Kansas,United States,Americas,7.2,701+
+460,68,"Stony Brook University, State University of New York",United States,Americas,43.5,332
+466,69,University at Buffalo SUNY,United States,Americas,36.9,380
+466,70,Washington State University,United States,Americas,5,701+
+470,71,Iowa State University,United States,Americas,12.5,667
+481,72,"The University of Tennessee, Knoxville",United States,Americas,2.4,701+
+488,73,University of Hawai?i at Manoa,United States,Americas,12,679
+497,74,"University of California, Riverside",United States,Americas,10.4,701+
+501,75,Colorado School of Mines,United States,Americas,7.4,701+
+506,76,University of Delaware,United States,Americas,12.6,665
+527,77,Missouri University of Science and Technology,United States,Americas,12.8,663
+531,78,University of Utah,United States,Americas,10.3,701+
+565,79,University of Connecticut,United States,Americas,19.4,556
+573,80,Florida State University,United States,Americas,4.2,701+
+574,81,Florida International University,United States,Americas,12.9,661
+587,82,The University of Georgia,United States,Americas,4.5,701+
+596,83,University of Iowa,United States,Americas,3.7,701+
+596,84,University of Texas Dallas,United States,Americas,47.4,309
+601-610,85,Illinois Institute of Technology,United States,Americas,97.3,77
+601-610,85,Rensselaer Polytechnic Institute,United States,Americas,29.9,430
+601-610,85,University of South Carolina,United States,Americas,3.2,701+
+621-630,88,University of South Florida,United States,Americas,22.2,516
+631-640,89,Boston College,United States,Americas,18.8,571
+631-640,89,Tulane University,United States,Americas,10.8,701+
+641-650,91,Lehigh University,United States,Americas,27.8,447
+641-650,91,Oregon State University,United States,Americas,8.1,701+
+641-650,91,"University of Missouri, Columbia",United States,Americas,3.3,701+
+651-660,94,University of Houston,United States,Americas,19.8,545
+661-670,95,City University of New York,United States,Americas,4.4,701+
+681-690,96,Temple University,United States,Americas,5.7,701+
+701-710,97,Stevens Institute of Technology,United States,Americas,96.4,86
+701-710,97,University of Nebraska - Lincoln,United States,Americas,7.1,701+
+701-710,97,University of Oklahoma,United States,Americas,5.7,701+
+711-720,100,American University,United States,Americas,19.4,554
+721-730,101,Brandeis University,United States,Americas,75.1,186
+721-730,101,Drexel University,United States,Americas,23.8,495
+741-750,103,University of Central Florida,United States,Americas,4.3,701+
+741-750,103,Wake Forest University,United States,Americas,10.9,701+
+761-770,105,University of Cincinnati,United States,Americas,12.4,670
+761-770,105,"University of Colorado, Denver ",United States,Americas,8.1,701+
+771-780,107,"University of Maryland, Baltimore County",United States,Americas,25.8,469
+781-790,108,Texas Tech University,United States,Americas,9.6,701+
+781-790,108,The New School,United States,Americas,92.3,106
+791-800,110,New Jersey Institute of Technology (NJIT),United States,Americas,52.9,278
+791-800,110,University of Kentucky,United States,Americas,3.3,701+
+791-800,110,University of New Mexico,United States,Americas,4,701+
+791-800,110,Wayne State University,United States,Americas,5.4,701+
+801-850,114,Rutgers University–Newark,United States,Americas,32.7,408
+801-850,114,Syracuse University,United States,Americas,39.3,357
+801-850,114,University of Alaska Fairbanks,United States,Americas,3,701+
+801-850,114,University of Oregon,United States,Americas,3.6,701+
+851-900,118,Clarkson University,United States,Americas,15,623
+851-900,118,Georgia State University,United States,Americas,10.4,701+
+851-900,118,Kansas State University ,United States,Americas,4.6,701+
+851-900,118,Oklahoma State University ,United States,Americas,6.1,701+
+851-900,118,Swarthmore College,United States,Americas,21.6,520
+851-900,118,University at Albany SUNY,United States,Americas,7.2,701+
+851-900,118,University of Mississippi,United States,Americas,2.9,701+
+851-900,118,Virginia Commonwealth University,United States,Americas,3.2,701+
+901-950,126,Louisiana State University,United States,Americas,3.8,701+
+901-950,126,Michigan Technological University,United States,Americas,11.1,697
+901-950,126,"University of Alabama, Birmingham",United States,Americas,,
+901-950,126,Worcester Polytechnic Institute,United States,Americas,23.5,499
+951-1000,130,Auburn University,United States,Americas,6,701+
+951-1000,130,Clark University,United States,Americas,84.7,154
+951-1000,130,Clemson University,United States,Americas,5.2,701+
+951-1000,130,St. Louis University,United States,Americas,11,698
+951-1000,130,The University of Alabama,United States,Americas,2.5,701+
+951-1000,130,University of Denver,United States,Americas,5.8,701+
+1001-1200,136,Baylor University,United States,Americas,3.8,701+
+1001-1200,136,Binghamton University SUNY,United States,Americas,10.3,701+
+1001-1200,136,Brigham Young University,United States,Americas,3,701+
+1001-1200,136,College of William and Mary,United States,Americas,5.4,701+
+1001-1200,136,Fordham University ,United States,Americas,13.9,641
+1001-1200,136,George Mason University,United States,Americas,15.3,616
+1001-1200,136,Howard University,United States,Americas,4.1,701+
+1001-1200,136,Indiana University–Purdue University Indianapolis,United States,Americas,6.6,701+
+1001-1200,136,Kent State University,United States,Americas,6.6,701+
+1001-1200,136,Loyola University Chicago,United States,Americas,3,701+
+1001-1200,136,Mississippi State University,United States,Americas,3.1,701+
+1001-1200,136,Northern Arizona University,United States,Americas,3.1,701+
+1001-1200,136,Ohio University,United States,Americas,3.3,701+
+1001-1200,136,Rochester Institute of Technology (RIT),United States,Americas,16.1,604
+1001-1200,136,San Diego State University,United States,Americas,3.5,701+
+1001-1200,136,Southern Methodist University,United States,Americas,8.7,701+
+1001-1200,136,The University of Texas at Arlington,United States,Americas,29.6,433
+1001-1200,136,University of Arkansas Fayetteville ,United States,Americas,3,701+
+1001-1200,136,University of Idaho,United States,Americas,5.9,701+
+1001-1200,136,University of Louisville,United States,Americas,3.2,701+
+1001-1200,136,University of Massachusetts Boston,United States,Americas,14.8,629
+1001-1200,136,"University of Missouri, Kansas City",United States,Americas,20,542
+1001-1200,136,University of New Hampshire,United States,Americas,2.5,701+
+1001-1200,136,University of North Carolina at Charlotte,United States,Americas,6.2,701+
+1001-1200,136,University of North Texas,United States,Americas,24.8,480
+1001-1200,136,University of Rhode Island ,United States,Americas,2.6,701+
+1001-1200,136,University of Texas at San Antonio,United States,Americas,2.7,701+
+1001-1200,136,University of Texas El Paso ,United States,Americas,5.3,701+
+1001-1200,136,University of Toledo,United States,Americas,10.4,701+
+1001-1200,136,University of Tulsa,United States,Americas,17.8,581
+1001-1200,136,University of Vermont,United States,Americas,2.4,701+
+1001-1200,136,University of Wyoming,United States,Americas,4,701+
+1001-1200,136,Utah State University ,United States,Americas,1.6,701+
+1001-1200,136,West Virginia University,United States,Americas,4.2,701+
+1201-1400,170,Central Michigan University,United States,Americas,6.9,701+
+1201-1400,170,Cleveland State University,United States,Americas,26.2,462
+1201-1400,170,CUNY The City College of New York,United States,Americas,4.7,701+
+1201-1400,170,Florida Atlantic University - Boca Raton,United States,Americas,4.4,701+
+1201-1400,170,Marquette University,United States,Americas,2.7,701+
+1201-1400,170,Miami University,United States,Americas,5.5,701+
+1201-1400,170,Portland State University,United States,Americas,6.1,701+
+1201-1400,170,San Francisco State University,United States,Americas,5,701+
+1201-1400,170,Seattle University,United States,Americas,13.2,656
+1201-1400,170,University of Memphis,United States,Americas,8.3,701+
+1201-1400,170,University of Missouri Saint Louis,United States,Americas,3.1,701+
+1201-1400,170,University of North Carolina at Greensboro,United States,Americas,3.4,701+
+1201-1400,170,University of San Diego,United States,Americas,6.8,701+
+1201-1400,170,University of San Francisco,United States,Americas,20.2,534
+1201-1400,170,University of South Alabama (USA),United States,Americas,2.1,701+
+1201-1400,170,University of the Pacific,United States,Americas,12,680
+1201-1400,170,University of Wisconsin Milwaukee ,United States,Americas,5.1,701+
+1201-1400,170,Western Michigan University,United States,Americas,10.6,701+
+1401+,188,California Polytechnic State University,United States,Americas,,
+1401+,189,California State University - Los Angeles,United States,Americas,2.3,701+
+1401+,190,"California State University, Long Beach",United States,Americas,3.4,701+
+1401+,191,Humboldt State University,United States,Americas,1.2,701+
+1401+,192,Illinois State University,United States,Americas,3.1,701+
+1401+,193,Indiana State University,United States,Americas,2.2,701+
+1401+,194,Nova Southeastern University,United States,Americas,3.9,701+
+1401+,195,University of Central Oklahoma,United States,Americas,9.9,701+
+1401+,196,University of Montana Missoula ,United States,Americas,1.9,701+
+1401+,197,Western Washington University,United States,Americas,1.6,701+
