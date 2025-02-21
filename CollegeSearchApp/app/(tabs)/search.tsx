@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
+import axios from 'axios';
+
+const BACKEND_URL = 'localhost:4000/search/'
 
 const Search: React.FC = () => {
+
+  const [searchFilters, setSearchFilters] = useState<object>({})
+  const [searchSort, setSearchSort] = useState<object>({sortby: 'school.name', asc: 'true'})
+  const [searchResults, setSearchResults] = useState<object>({})
+
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [colleges, setColleges] = useState<string[]>([]);
-
+  
+  
   // Simulating search logic
   const handleSearch = () => {
-    // Here you would usually make an API call or database query to get the results
-    // For now, we're just using mock data
     const mockColleges = [
       'Harvard University',
       'Stanford University',
@@ -16,18 +23,26 @@ const Search: React.FC = () => {
       'University of California, Berkeley',
       'Princeton University',
     ];
-
+  
     // Filter colleges based on the search term
     const filteredColleges = mockColleges.filter((college) =>
       college.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+  
     setColleges(filteredColleges);
+
+    // call backend
+    // axios.post(BACKEND_URL, {
+    //   searchFilters,
+    //   searchSort,
+    // })
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Search Colleges</Text>
+      <ScrollView style={{ flexGrow: 1}}>
+      </ScrollView>
       <TextInput
         style={styles.input}
         placeholder="Enter college name"
