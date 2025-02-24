@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, TextInput, Button, Pressable, FlatList, StyleSheet } from 'react-native';
 import axios from 'axios';
 
 const BACKEND_URL = 'localhost:4000/search/'
@@ -41,15 +41,42 @@ const Search: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Search Colleges</Text>
-      <ScrollView style={{ flexGrow: 1}}>
+
+      <ScrollView style={styles.filterContainer}>
+        <View style={styles.filterSet}>
+          <Text style={styles.filterTitle}>College Name (if looking for specific school)</Text>
+          <TextInput
+            style={styles.filterTextInput}
+            placeholder="Enter college name"
+            value={searchTerm}
+            onChangeText={(text) => setSearchTerm(text)}
+            />
+        </View>
+
+        <View style={styles.filterSet}>
+          <Text style={styles.filterTitle}>Size (number of students)</Text>
+          <View style={styles.filterRange}>
+            <TextInput style={styles.filterTextInput} placeholder="Min" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+          </View>
+        </View>
+
+        <View style={styles.filterSet}>
+          <Text style={styles.filterTitle}>Ranking</Text>
+        </View>
+
+        <View style={styles.filterSet}>
+          <Text style={styles.filterTitle}>Average Net Cost</Text>
+        </View>
+
+        <View style={styles.filterSet}>
+          <Text style={styles.filterTitle}>Median SAT scores</Text>
+        </View>
+
+
+        <View style={styles.buttonContainer}>
+          <Button title="Search" onPress={handleSearch} />
+        </View>
       </ScrollView>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter college name"
-        value={searchTerm}
-        onChangeText={(text) => setSearchTerm(text)}
-      />
-      <Button title="Search" onPress={handleSearch} />
       <FlatList
         data={colleges}
         renderItem={({ item }) => (
@@ -76,7 +103,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-  input: {
+  filterTextInput: {
     height: 40,
     borderColor: '#ccc',
     borderWidth: 1,
@@ -97,6 +124,32 @@ const styles = StyleSheet.create({
   collegeName: {
     fontSize: 16,
   },
+  filterContainer: {
+    flexGrow: 1,
+    width: '100%',
+    backgroundColor: '#dedede',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 20,
+    position: "relative",
+    height: 'auto'
+  },
+  buttonContainer: {
+    width: '50%',
+    margin: 'auto',
+  },
+  filterSet: {
+
+  },
+  filterTitle: {
+
+  },
+  filterRange: {
+
+  },
+  filterMultiText: {
+    
+  }
 });
 
 export default Search;
