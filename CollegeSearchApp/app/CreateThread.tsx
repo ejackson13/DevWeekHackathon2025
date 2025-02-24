@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
+import Toast from 'react-native-toast-message';
 
 const CreateThread: React.FC = () => {
   const router = useRouter();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [postSuccess, setPostSuccess] = useState(false);
 
   const handleCreateThread = async () => {
     if (title === "" || content === "") {
-      alert('Error Please fill in both fields.')
+      Toast.show({ type: 'error', text1: 'Error', text2: 'Please fill in both fields.' });
       return;
     }
 
@@ -22,15 +22,18 @@ const CreateThread: React.FC = () => {
       });
 
       if (response.ok) {
-        setPostSuccess(true)
-        alert('Success: Thread created successfully!');
-        router.back(); // Navigate back to HomeScreen
+        Toast.show({ type: 'success', text1: 'Success', text2: 'Thread created successfully!' });
+        setTimeout(() => router.back(), 1500); // Navigate back after success
       } else {
         throw new Error('Failed to create thread');
       }
     } catch (error) {
-      alert('Error: Something went wrong. Try again.');
+      Toast.show({ type: 'error', text1: 'Error', text2: 'Something went wrong. Try again.' });
     }
+  };
+
+  const handleCancel = () => {
+    router.back(); // Navigate back
   };
 
   return (
@@ -49,13 +52,19 @@ const CreateThread: React.FC = () => {
         onChangeText={setContent}
         multiline
       />
-      <TouchableOpacity style={styles.button} onPress={handleCreateThread}>
-        <Text style={styles.buttonText}>Post Thread</Text>
-      </TouchableOpacity>
-      <div hidden={!postSuccess} style={{backgroundColor: 'lime'}}>
-        <p style={{color:'white'}}>Thread successfully posted!</p>
-      </div>
 
+      {/* Buttons side by side */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.postButton} onPress={handleCreateThread}>
+          <Text style={styles.buttonText}>Post Thread</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
+          <Text style={styles.buttonText}>Cancel</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Toast Message Component */}
+      <Toast />
     </View>
   );
 };
@@ -84,16 +93,31 @@ const styles = StyleSheet.create({
     height: 100,
     textAlignVertical: 'top',
   },
-  button: {
+  buttonContainer: {
+    flexDirection: 'row', // Arrange buttons in a row
+    justifyContent: 'space-between', // Space them out evenly
+    marginTop: 10,
+  },
+  postButton: {
     backgroundColor: '#007AFF',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',
+    flex: 1,
+    marginRight: 10, // Space between buttons
+  },
+  cancelButton: {
+    backgroundColor: '#FF3B30',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    flex: 1,
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 

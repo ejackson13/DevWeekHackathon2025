@@ -20,25 +20,26 @@ const Homepage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [viewAll, setViewAll] = useState<boolean>(false);
 
+  const fetchThreads = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('http://localhost:4000/threads');
+      if (!response.ok) {
+        throw new Error('Failed to fetch threads');
+      }
+      const data = await response.json();
+      setThreads(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Fetch threads when "View All" is toggled
   useEffect(() => {
     if (viewAll) {
-      const fetchThreads = async () => {
-        setLoading(true);
-        setError(null);
-        try {
-          const response = await fetch('http://localhost:4000/threads');
-          if (!response.ok) {
-            throw new Error('Failed to fetch threads');
-          }
-          const data = await response.json();
-          setThreads(data);
-        } catch (err) {
-          setError(err instanceof Error ? err.message : 'An unknown error occurred');
-        } finally {
-          setLoading(false);
-        }
-      };
       fetchThreads();
     }
   }, [viewAll]);

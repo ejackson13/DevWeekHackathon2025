@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
+import Toast from 'react-native-toast-message';
 
 const EditThread: React.FC = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const EditThread: React.FC = () => {
         setTitle(data.title);
         setContent(data.content);
       } catch (error) {
-        Alert.alert('Error', 'Could not fetch thread details.');
+        Toast.show({ type: 'error', text1: 'Error', text2: 'Could not fetch thread details.' });
       } finally {
         setLoading(false);
       }
@@ -32,7 +33,7 @@ const EditThread: React.FC = () => {
 
   const handleUpdateThread = async () => {
     if (title.trim() === "" || content.trim() === "") {
-      Alert.alert('Error', 'Please fill in both fields.');
+      Toast.show({ type: 'error', text1: 'Error', text2: 'Please fill in both fields.' });
       return;
     }
 
@@ -44,14 +45,18 @@ const EditThread: React.FC = () => {
       });
 
       if (response.ok) {
-        Alert.alert('Success', 'Thread updated successfully!');
-        router.back(); // Navigate back to the previous screen
+        Toast.show({ type: 'success', text1: 'Success', text2: 'Thread updated successfully!' });
+        setTimeout(() => router.navigate('/(tabs)/HomeScreen'), 1500); // Navigate back to the previous screen after success
       } else {
         throw new Error('Failed to update thread');
       }
     } catch (error) {
-      Alert.alert('Error', 'Something went wrong. Try again.');
+      Toast.show({ type: 'error', text1: 'Error', text2: 'Something went wrong. Try again.' });
     }
+  };
+
+  const handleCancel = () => {
+    router.back(); // Navigate back
   };
 
   if (loading) {
@@ -78,9 +83,18 @@ const EditThread: React.FC = () => {
         onChangeText={setContent}
         multiline
       />
-      <TouchableOpacity style={styles.button} onPress={handleUpdateThread}>
-        <Text style={styles.buttonText}>Update Thread</Text>
-      </TouchableOpacity>
+      {/* Buttons side by side */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.updateButton} onPress={handleUpdateThread}>
+          <Text style={styles.buttonText}>Update Thread</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
+          <Text style={styles.buttonText}>Cancel</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Toast Message Component */}
+      <Toast />
     </View>
   );
 };
@@ -109,16 +123,31 @@ const styles = StyleSheet.create({
     height: 100,
     textAlignVertical: 'top',
   },
-  button: {
+  buttonContainer: {
+    flexDirection: 'row', // Arrange buttons in a row
+    justifyContent: 'space-between', // Space them out evenly
+    marginTop: 10,
+  },
+  updateButton: {
     backgroundColor: '#007AFF',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',
+    flex: 1,
+    marginRight: 10, // Space between buttons
+  },
+  cancelButton: {
+    backgroundColor: '#FF3B30',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    flex: 1,
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   loader: {
     flex: 1,

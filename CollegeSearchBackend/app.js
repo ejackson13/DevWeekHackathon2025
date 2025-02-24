@@ -19,9 +19,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/collegeSearchApp', {
 
 // Define Thread Schema
 const threadSchema = new mongoose.Schema({
-  title: String,
-  content: String,
-  createdAt: { type: Date, default: Date.now }
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
 const Thread = mongoose.model('Thread', threadSchema);
@@ -36,7 +37,7 @@ app.post('/threads', async (req, res) => {
     try {
         const { title, content } = req.body;
         
-        // Validate the input (This is not happening for now)
+        // Validate the input
         if (!title || !content) {
             return res.status(400).json({ error: "Title and content are required" });
         }
@@ -64,13 +65,42 @@ app.get('/threads', async (req, res) => {
     }
 });
 
+// Update an Existing Thread
+app.put('/threads/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, content } = req.body;
 
-// Routes
+        // Validate the input
+        if (!title || !content) {
+            return res.status(400).json({ error: "Title and content are required" });
+        }
+
+        // Find the thread by ID
+        const thread = await Thread.findById(id);
+        if (!thread) {
+            return res.status(404).json({ error: "Thread not found" });
+        }
+
+        // Update the thread with new title and content
+        thread.title = title;
+        thread.content = content;
+        thread.updatedAt = new Date(); // Update the timestamp
+
+        // Save the updated thread
+        await thread.save();
+
+        // Respond with success
+        res.status(200).json({ message: "Thread updated successfully!", thread });
+    } catch (error) {
+        console.error("Error updating thread:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// Routes for search-related functionality (example)
 const searchRoutes = require("./controllers/search");
-
 app.use("/search", searchRoutes);
-
-
 
 // Start Server
 app.listen(PORT, () => {
