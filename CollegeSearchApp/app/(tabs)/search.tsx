@@ -56,20 +56,37 @@ const Search: React.FC = () => {
         <View style={styles.filterSet}>
           <Text style={styles.filterTitle}>Size (number of students)</Text>
           <View style={styles.filterRange}>
-            <TextInput style={styles.filterTextInput} placeholder="Min" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            <Text style={styles.filterRangeDash}>-</Text>
+            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
           </View>
         </View>
 
         <View style={styles.filterSet}>
           <Text style={styles.filterTitle}>Ranking</Text>
+          <View style={styles.filterRange}>
+            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            <Text style={styles.filterRangeDash}>-</Text>
+            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+          </View>
         </View>
 
         <View style={styles.filterSet}>
           <Text style={styles.filterTitle}>Average Net Cost</Text>
+          <View style={styles.filterRange}>
+            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            <Text style={styles.filterRangeDash}>-</Text>
+            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+          </View>
         </View>
 
         <View style={styles.filterSet}>
           <Text style={styles.filterTitle}>Median SAT scores</Text>
+          <View style={styles.filterRange}>
+            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            <Text style={styles.filterRangeDash}>-</Text>
+            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+          </View>
         </View>
 
 
@@ -103,14 +120,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-  filterTextInput: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingLeft: 10,
-    borderRadius: 5,
-  },
   collegeItem: {
     padding: 10,
     marginVertical: 5,
@@ -139,13 +148,53 @@ const styles = StyleSheet.create({
     margin: 'auto',
   },
   filterSet: {
-
+    
   },
   filterTitle: {
-
+    paddingLeft: 5,
+    textAlign: 'left',
+    fontWeight: 'bold',
+    marginBottom: 5
+  },
+  filterTextInput: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 15,
+    paddingLeft: 5,
+    borderRadius: 5,
+    backgroundColor: 'white',
   },
   filterRange: {
-
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems:'center'
+  },
+  filterRangeInput: {
+    width: '25%',
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 15,
+    paddingLeft: 5,
+    borderRadius: 5,
+    backgroundColor: 'white',
+  },
+  filterRangeDash: {
+    height: 40,
+    width: '10%',
+    textAlign: 'center',
+    fontSize: 24,
+    margin: 0,
+    marginBottom: 15,
+    padding: 0,
   },
   filterMultiText: {
     
