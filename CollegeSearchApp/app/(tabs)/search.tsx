@@ -6,6 +6,7 @@ const BACKEND_URL = 'localhost:4000/search/'
 
 const Search: React.FC = () => {
 
+  const [dropdownExpanded, setDropdownExpanded] = useState(false)
   const [searchFilters, setSearchFilters] = useState<object>({})
   const [searchSort, setSearchSort] = useState<object>({sortby: 'school.name', asc: 'true'})
   const [searchResults, setSearchResults] = useState<object>({})
@@ -13,6 +14,13 @@ const Search: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [colleges, setColleges] = useState<string[]>([]);
   
+  const getDropdownVisibility = () => {
+    if (dropdownExpanded) {
+      return 'flex'
+    } else {
+      return 'none'
+    }
+  }
   
   // Simulating search logic
   const handleSearch = () => {
@@ -43,49 +51,160 @@ const Search: React.FC = () => {
       <Text style={styles.title}>Search Colleges</Text>
 
       <ScrollView style={styles.filterContainer}>
-        <View style={styles.filterSet}>
-          <Text style={styles.filterTitle}>College Name (if looking for specific school)</Text>
-          <TextInput
-            style={styles.filterTextInput}
-            placeholder="Enter college name"
-            value={searchTerm}
-            onChangeText={(text) => setSearchTerm(text)}
-            />
-        </View>
+        <Text style={styles.filterCategoryTitle}>General</Text>
+        <View style={styles.filterCategory}>
 
-        <View style={styles.filterSet}>
-          <Text style={styles.filterTitle}>Size (number of students)</Text>
-          <View style={styles.filterRange}>
-            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
-            <Text style={styles.filterRangeDash}>-</Text>
-            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>College Name</Text>
+            <TextInput
+              style={styles.filterTextInput}
+              placeholder="Enter college name"
+              value={searchTerm}
+              onChangeText={(text) => setSearchTerm(text)}
+              />
+          </View>
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Size (students)</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
           </View>
         </View>
 
-        <View style={styles.filterSet}>
-          <Text style={styles.filterTitle}>Ranking</Text>
-          <View style={styles.filterRange}>
-            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
-            <Text style={styles.filterRangeDash}>-</Text>
-            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+        <Text style={[styles.filterCategoryTitle, {display: getDropdownVisibility()}]}>Location</Text>
+        <View style={[styles.filterCategory, {display: getDropdownVisibility()}]}>
+
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>City</Text>
+            <TextInput
+              style={styles.filterTextInput}
+              placeholder="Boston, Pittsburgh, e.g."
+              value={searchTerm}
+              onChangeText={(text) => setSearchTerm(text)}
+              />
+          </View>
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>State</Text>
+            <TextInput
+              style={styles.filterTextInput}
+              placeholder="MA, PA, etc."
+              value={searchTerm}
+              onChangeText={(text) => setSearchTerm(text)}
+              />
+          </View>
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Region</Text>
+            <TextInput
+              style={styles.filterTextInput}
+              placeholder="Mideast, e.g."
+              value={searchTerm}
+              onChangeText={(text) => setSearchTerm(text)}
+              />
+          </View>
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Locale</Text>
+            <TextInput
+              style={styles.filterTextInput}
+              placeholder="Urban, e.g."
+              value={searchTerm}
+              onChangeText={(text) => setSearchTerm(text)}
+              />
           </View>
         </View>
 
-        <View style={styles.filterSet}>
-          <Text style={styles.filterTitle}>Average Net Cost</Text>
-          <View style={styles.filterRange}>
-            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
-            <Text style={styles.filterRangeDash}>-</Text>
-            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+        <Text style={[styles.filterCategoryTitle, {display: getDropdownVisibility()}]}>Distance-based Location</Text>
+        <View style={[styles.filterCategory, {display: getDropdownVisibility()}]}>
+
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Your ZIP Code</Text>
+            <TextInput
+              style={styles.filterTextInput}
+              placeholder="15090, e.g."
+              value={searchTerm}
+              onChangeText={(text) => setSearchTerm(text)}
+              />
+          </View>
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Distance away (mi.)</Text>
+            <TextInput
+              style={styles.filterTextInput}
+              placeholder="Enter college name"
+              value={searchTerm}
+              onChangeText={(text) => setSearchTerm(text)}
+              />
           </View>
         </View>
 
-        <View style={styles.filterSet}>
-          <Text style={styles.filterTitle}>Median SAT scores</Text>
-          <View style={styles.filterRange}>
-            <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
-            <Text style={styles.filterRangeDash}>-</Text>
-            <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+        <Text style={styles.filterCategoryTitle}>Academics</Text>
+        <View style={styles.filterCategory}>
+
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Ranking</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
+          </View>
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Acceptance Rate</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
+          </View>
+          <View style={[styles.filterSet, {display: getDropdownVisibility()}]}>
+            <Text style={styles.filterName}>Retention Rate</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
+          </View>
+        </View>
+
+        <Text style={styles.filterCategoryTitle}>Cost</Text>
+        <View style={styles.filterCategory}>
+
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>In state tuition</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
+          </View>
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Out of state tuition</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
+          </View>
+          <View style={[styles.filterSet, {display: getDropdownVisibility()}]}>
+            <Text style={styles.filterName}>Average Net Cost</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
+          </View>
+        </View>
+
+        <Text style={[styles.filterCategoryTitle, {display: getDropdownVisibility()}]}>Standardized Tests</Text>
+        <View style={[styles.filterCategory, {display: getDropdownVisibility()}]}>
+
+          <View style={styles.filterSet}>
+            <Text style={styles.filterName}>Median SAT scores</Text>
+            <View style={styles.filterRange}>
+              <TextInput style={styles.filterRangeInput} placeholder="Min" keyboardType='numeric' value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+              <Text style={styles.filterRangeDash}>-</Text>
+              <TextInput style={styles.filterRangeInput} placeholder="Max" value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
+            </View>
           </View>
         </View>
 
@@ -147,14 +266,33 @@ const styles = StyleSheet.create({
     width: '50%',
     margin: 'auto',
   },
-  filterSet: {
-    
+  filterCategory: {
+    width: '100%',
+    margin: 0,
+    padding: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap'
   },
-  filterTitle: {
-    paddingLeft: 5,
-    textAlign: 'left',
+  filterCategoryTitle: {
+    marginTop: 10,
+    marginBottom: 5,
+    marginHorizontal: 'auto',
+    textAlign: 'center',
     fontWeight: 'bold',
-    marginBottom: 5
+    fontSize: 20
+  },
+  filterSet: {
+    paddingHorizontal: 5,
+    paddingVertical: 0,
+    width: '50%'
+  },
+  filterName: {
+    //paddingLeft: 5,
+    textAlign: 'center',
+    fontWeight: 'normal',
+    marginBottom: 5,
+    fontSize: 16,
   },
   filterTextInput: {
     height: 40,
@@ -171,11 +309,11 @@ const styles = StyleSheet.create({
   filterRange: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems:'center'
   },
   filterRangeInput: {
-    width: '25%',
+    width: '45%',
     height: 40,
     borderColor: '#ccc',
     borderWidth: 1,
