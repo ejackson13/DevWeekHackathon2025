@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, TextInput, Button, Pressable, FlatList, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, TextInput, Button, Pressable, FlatList, StyleSheet, TouchableHighlight} from 'react-native';
 import axios from 'axios';
+import { FaFilter } from "react-icons/fa";
 
 const BACKEND_URL = 'localhost:4000/search/'
 
 const Search: React.FC = () => {
 
   const [dropdownExpanded, setDropdownExpanded] = useState(false)
+  const [filtersVisible, setFiltersVisible] = useState(false)
+  const [filterButtonText, setFilterButtonText] = useState("Show All Filters")
   const [searchFilters, setSearchFilters] = useState<object>({})
   const [searchSort, setSearchSort] = useState<object>({sortby: 'school.name', asc: 'true'})
   const [searchResults, setSearchResults] = useState<object>({})
@@ -20,6 +23,21 @@ const Search: React.FC = () => {
     } else {
       return 'none'
     }
+  }
+
+  const getNumFilters = () => {
+    if (searchFilters === undefined) {
+      return 0
+    }
+
+    var numFilters = 0
+    for (var [filter, val] of Object.entries(searchFilters)){
+      if (val !== undefined && val !== "") {
+        numFilters++
+      }
+    }
+
+    return numFilters;
   }
   
   // Simulating search logic
@@ -46,9 +64,20 @@ const Search: React.FC = () => {
     // })
   };
 
+  const handleFilterButton = () => {
+    setDropdownExpanded(!dropdownExpanded);
+
+    setFilterButtonText(!dropdownExpanded ? "Show fewer filters" : "Show all filters")
+  }
+
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Search Colleges</Text>
+
+      <TouchableHighlight>
+        <FaFilter style={styles.filterIcon} numFilters={getNumFilters()}/>
+      </TouchableHighlight>
 
       <ScrollView style={styles.filterContainer}>
         <Text style={styles.filterCategoryTitle}>General</Text>
@@ -210,6 +239,9 @@ const Search: React.FC = () => {
 
 
         <View style={styles.buttonContainer}>
+          <Button title={filterButtonText} onPress={handleFilterButton} />
+        </View>
+        <View style={styles.buttonContainer}>
           <Button title="Search" onPress={handleSearch} />
         </View>
       </ScrollView>
@@ -260,11 +292,13 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     position: "relative",
-    height: 'auto'
+    maxHeight: '20vh',
+    overflow: 'scroll',
   },
   buttonContainer: {
     width: '50%',
     margin: 'auto',
+    marginVertical: "1rem",
   },
   filterCategory: {
     width: '100%',
@@ -272,7 +306,8 @@ const styles = StyleSheet.create({
     padding: 0,
     flexDirection: 'row',
     justifyContent: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    gap: '5%'
   },
   filterCategoryTitle: {
     marginTop: 10,
@@ -285,7 +320,7 @@ const styles = StyleSheet.create({
   filterSet: {
     paddingHorizontal: 5,
     paddingVertical: 0,
-    width: '50%'
+    width: '40%'
   },
   filterName: {
     //paddingLeft: 5,
@@ -335,7 +370,10 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   filterMultiText: {
-    
+
+  },
+  filterIcon: {
+
   }
 });
 

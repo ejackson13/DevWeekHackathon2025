@@ -1,0 +1,120 @@
+.container {
+    flex: 1;
+    justify-content: center;
+    padding: 20;
+    background-color: #f5f5f5;
+}
+
+.title {
+    font-size: 24;
+    font-weight: bold;
+    margin-bottom: 20;
+    text-align: center;
+}
+
+.collegeItem {
+    padding: 10;
+    margin: 5px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.104) 0 1;
+}
+
+.collegeName {
+    font-size: 16px;
+}
+
+.filterContainer {
+    flex-grow: 1;
+    width: 100%;
+    background-color: #dedede;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    max-height: 20vh;
+    overflow: scroll;
+}
+
+.buttonContainer {
+    width: 50%;
+    margin: 1rem auto;
+}
+
+.filterCategory {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+.filterCategoryTitle {
+    margin: 10px auto 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20;
+}
+
+.filterSet {
+    padding: 0 5px;
+    width: 40%;
+}
+
+.filterName {
+    padding-left: 5px;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.filterTextInput {
+    height: 40;
+    border-color: #ccc;
+    border-width: 1px;
+    margin: 0;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.filterRange {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.filterRangeInput {
+    width: 45%;
+    height: 40;
+    border-color: #ccc;
+    border-width: 1px;
+    margin: 0;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.filterRangeDash {
+    height: 40px;
+    width: 10%;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+.filterMultiText {
+
+}
+
+.filterIcon {
+
+}
